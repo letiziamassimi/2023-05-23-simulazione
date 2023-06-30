@@ -1,5 +1,8 @@
 package it.polito.tdp.baseball;
 
+
+// Pulisci il grafo ogni volta che fai clic sul pulsante "Crea grafo"
+
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -22,6 +25,9 @@ this.model.creaGrafo(annoSelezionato);
 txtResult.appendText("numero vertici: " + this.model.numeroVertici() + "\n");
 txtResult.appendText("numero archi: " + this.model.numeroArchi() + "\n");
 
+txtMinuti.clear();
+cmbMese.getItems().clear();
+
 public int numeroVertici() {
 return this.grafo.vertexSet().size();
 }
@@ -42,8 +48,11 @@ Map<String, People> playerIdMap;
 public Model() {
 
 	baseballDao = new BaseballDAO();
-	grafo = new SimpleGraph<>(DefaultEdge.class);
-	playerIdMap = new HashMap<>();
+}
+
+public void creaGrafo(){
+grafo = new SimpleGraph<>(DefaultEdge.class);
+playerIdMap = new HashMap<>();
 }
 
 
@@ -171,7 +180,7 @@ return differenza;
 
 
 
---- PESO TRA DUE ARCHI ---
+--- PESO TRA DUE VERTICI ---
 
 public Double pesoArcoTraDueGeni(Genes gene1, Genes gene2) {
 Double peso = 0.0;
